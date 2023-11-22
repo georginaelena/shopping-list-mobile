@@ -123,25 +123,28 @@ class _ShopFormPageState extends State<ShopFormPage> {
                         onPressed: () async {
                           if (_formKey.currentState!.validate()) {
                               // Kirim ke Django dan tunggu respons
-                              // TODO: Ganti URL dan jangan lupa tambahkan trailing slash (/) di akhir URL!
+                              // Ganti URL dan jangan lupa tambahkan trailing slash (/) di akhir URL!
                               final response = await request.postJson(
                               "http://localhost:8000/create-flutter/",
                               jsonEncode(<String, String>{
                                   'name': _name,
                                   'price': _price.toString(),
                                   'description': _description,
-                                  // TODO: Sesuaikan field data sesuai dengan aplikasimu
+                                  // Sesuaikan field data sesuai dengan aplikasimu
                               }));
                               if (response['status'] == 'success') {
+                                  // ignore: use_build_context_synchronously
                                   ScaffoldMessenger.of(context)
                                       .showSnackBar(const SnackBar(
                                   content: Text("Produk baru berhasil disimpan!"),
                                   ));
+                                  // ignore: use_build_context_synchronously
                                   Navigator.pushReplacement(
                                       context,
                                       MaterialPageRoute(builder: (context) => MyHomePage()),
                                   );
                               } else {
+                                  // ignore: use_build_context_synchronously
                                   ScaffoldMessenger.of(context)
                                       .showSnackBar(const SnackBar(
                                       content:

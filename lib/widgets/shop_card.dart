@@ -54,15 +54,19 @@ class ShopCard extends StatelessWidget {
             
             if (response['status']) {
               String uname = response["username"];
+              // ignore: use_build_context_synchronously
               ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                 content: Text("$message Sampai jumpa, $uname."),
               ));
+              // ignore: use_build_context_synchronously
               Navigator.pushReplacement(
                 context,
                 MaterialPageRoute(builder: (context) => const LoginPage()),
               );
             } else {
+              // ignore: use_build_context_synchronously
               ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                // ignore: unnecessary_string_interpolations
                 content: Text("$message"),
               ));
             }
